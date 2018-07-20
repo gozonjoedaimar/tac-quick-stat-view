@@ -20,6 +20,7 @@
 
     <!-- Plugin CSS -->
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link href="vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
     <link href="css/freelancer.min.css" rel="stylesheet">
@@ -79,8 +80,28 @@
       </div>
     </header>
 
+    <!-- Unit Compare Loader Grid -->
+    <section class="unit-compare-loader text-white d-none" id="compareLoader">
+      <div class="container">
+        <h2 class="text-center text-uppercase text-secondary mb-0">Fetching data...</h2>
+      </div>
+    </section>
+
+    <!-- Unit Compare Grid -->
+    <section class="unit-compare-grid d-none" id="compareTables">
+      <div class="container">
+        <h2 class="text-center text-uppercase text-secondary mb-0">Units</h2>
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="text-left text-uppercase text-secondary mb-0">Lucian</h3>
+            <table id="lucian"></table>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Portfolio Grid Section -->
-    <section class="portfolio" id="portfolio">
+    <section class="portfolio d-none" id="portfolio">
       <div class="container">
         <h2 class="text-center text-uppercase text-secondary mb-0">Portfolio</h2>
         <hr class="star-dark mb-5">
@@ -221,7 +242,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer text-center">
+    <footer class="footer text-center d-none">
       <div class="container">
         <div class="row">
           <div class="col-md-4 mb-5 mb-lg-0">
@@ -422,6 +443,8 @@
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="vendor/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>

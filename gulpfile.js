@@ -56,6 +56,16 @@ gulp.task('vendor', function() {
     ])
     .pipe(gulp.dest('./vendor/magnific-popup'))
 
+    // Datatables
+    gulp.src([
+        './node_modules/datatables.net/**/*'
+      ])
+      .pipe(gulp.dest('./vendor/datatables.net'));
+    gulp.src([
+        './node_modules/datatables.net-bs4/**/*'
+      ])
+      .pipe(gulp.dest('./vendor/datatables.net-bs4'))
+
 });
 
 // Compile SCSS
