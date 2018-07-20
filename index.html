@@ -73,12 +73,38 @@
     <!-- Header -->
     <header class="masthead bg-primary text-white text-center">
       <div class="container">
-        <img class="img-fluid mb-5 d-block mx-auto" src="img/profile.png" alt="">
-        <h1 class="text-uppercase mb-0">TAC Unit Compare</h1>
+        <!-- <img class="img-fluid mb-5 d-block mx-auto" src="img/profile.png" alt=""> -->
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-uppercase mb-0">View/Compare your favorite <span class="text-warning">TAC</span> unit here</h1>
+          </div>
+          <div class="col-md-12">
+            <h3 class="font-weight-light mb-0">Get the <span class="text-danger font-weight-bold text-uppercase">code</span> here</h3>
+          </div>
+          <div class="col-md-12">
+            <textarea class="form-control form-control-lg" onclick="this.focus();this.select()" readonly>var tacCompareSummary=t=>{var e=class{constructor(t,e,i){this.body=e||$("body"),this.baseType=[60,65,75,85],this.unitName=this.body.find(".heading h1").text(),this.baseType.indexOf(t)<0?t=this.baseType[0]:this.refreshStat(t)}ajax(t,i){$.ajax({url:t,beforeSend(t){console.log("Fetching url:",this.url)},dataType:"html",success(t){t=t.replace("<body",'<body><div id="body"').replace("</body>","</div></body>");var a=$(t).filter("#body");new e(i||60,a)}})}statInfo(){return["hp","patk","pdef","matk","mdef","dex","agi","crit","luck","jewels"]}logStats(){var t=this.unitName,e=this.body.find(".unit-panel > div.card-body > table > tbody > tr:nth-child(2) > td").text(),i=this.body.find(".unit-panel > div.card-body > table > tbody > tr:nth-child(1) > td span").data("title");console.log(t,"Stats",`(${e})`,`(${i})`);var a=[this.baseStat,this.j1Stat,this.j2Stat,this.j3Stat];this.body.find("#j4-tab").length&&a.push(this.j4Stat),console.table(a,["info",...this.statInfo()])}loadPage(t,e){return new Promise((t,i)=>{setTimeout(()=>{e(),t()},1e3)})}refreshStat(t=60){if(console.log(`Reading ${this.unitName} stats (${t})...`),this.baseType.indexOf(t)<0)console.error("Invalid baseType");else{var e=this;e.loadPage("#stats",function(){e.getBaseStat(null,t)}).then(function(){return e.loadPage("#jobs",function(){})}).then(function(){return e.loadPage("#j1",function(){e.getJ1(1)})}).then(function(){return e.loadPage("#j2",function(){e.getJ2(1)})}).then(function(){return e.loadPage("#j3",function(){e.getJ3(1)})}).then(function(){return e.body.find("#j4-tab").length?e.loadPage("#j4",function(){e.getJ4(1)}):void 0}).then(function(){e.logStats()})}}getBaseStat(t,e){var i,a=this,n=t?a.body.find(t):a.body.find("#stats > div > div.card-body > div:nth-child(1) > div:nth-child(2) > table"),d=this.baseType.indexOf(e)+2,s=n.find("tr > td:nth-child("+d+")").map((t,e)=>parseFloat($(e).text()));return this.baseStat=(i={},a.statInfo().forEach((t,e)=>{i[t]=s[e]}),i),this.baseStat.info=`base (${e})`,this.baseStat}getJobStat(t,e){var i=(t?this.body.find(t):this.body.find("#stats > div > div.card-body > div:nth-child(1) > div:nth-child(1) > table")).find("tr > td:nth-child(2)").map((t,e)=>parseFloat($(e).text())),a=this.baseStat,n={};return this.statInfo().forEach((t,d)=>{var s=isNaN(i[d])?0:i[d];n[t]=e?s+a[t]:s}),n}getJ1(t){return this.j1Stat={info:this.body.find("a#j1-tab").text()+" (job1)"},Object.assign(this.j1Stat,this.getJobStat("#j1 > div > div.card-body > div:nth-child(1) > div:nth-child(1) > table:nth-child(1)",t)),this.j1Stat}getJ2(t){return this.j2Stat={info:this.body.find("a#j2-tab").text()+" (job2)"},Object.assign(this.j2Stat,this.getJobStat("#j2 > div > div.card-body > div:nth-child(1) > div:nth-child(1) > table:nth-child(1)",t)),this.j2Stat}getJ3(t){return this.j3Stat={info:this.body.find("a#j3-tab").text()+" (job3)"},Object.assign(this.j3Stat,this.getJobStat("#j3 > div > div.card-body > div:nth-child(1) > div:nth-child(1) > table:nth-child(1)",t)),this.j3Stat}getJ4(t){return this.j4Stat={info:this.body.find("a#j4-tab").text()+" (job4)"},Object.assign(this.j4Stat,this.getJobStat("#j4 > div > div.card-body > div:nth-child(1) > div:nth-child(1) > table:nth-child(1)",t)),this.j4Stat}},i=t,a=new e;if(i){if(!a.baseType.includes(i))return console.log(i),void console.log("Invalid base leve provided.","Select one of these:",a.baseType);var n=$("a.listing-link");console.log("Unit links found:",n.length),n.length||($("#j1-tab").length?a.refreshStat(i):console.log("No units found.","Please check if you're on the correct page.")),n.each(function(t,e){a.ajax(e.href,i)})}else console.log("Please set base level.",a.baseType)};</textarea>
+          </div>
+        </div>
         <hr class="star-light">
-        <h2 class="font-weight-light mb-0">Web Developer - Graphic Artist - User Experience Designer</h2>
+        <!-- <button class="btn btn-warning btn-lg text-uppercase" id="compareTAC" type="button">Compare</button> -->
+        <!-- <h2 class="font-weight-light mb-0">Web Developer - Graphic Artist - User Experience Designer</h2> -->
       </div>
     </header>
+
+    <!-- Unit Compare Loader Grid -->
+    <section class="unit-compare-loader text-black " id="tacDemo">
+        <div class="container">
+          <h2 class="text-center text-uppercase text-secondary mb-0">Just paste the code</h2>
+          <p class="font-weight-light text-center mb-0">
+            1.) Navigate and filter units in <a href="http://alchemistcodedb.com/units" target="_blank">http://alchemistcodedb.com/units</a>. <br>
+            2.) Open console (F12) in browser. <br/>
+            3.) Paste the code and hit enter button. <br/> 
+            4.) Type <code>tacCompareSummary()</code> and hit that enter button to see the following.
+          </p>
+          <img class="img-fluid mb-5 d-block mx-auto" src="img/tac-compare.jpg" alt="">
+          <h2 class="text-center text-uppercase text-danger text-secondary mb-0">Enjoy!!!</h2>
+        </div>
+      </section>
 
     <!-- Unit Compare Loader Grid -->
     <section class="unit-compare-loader text-white d-none" id="compareLoader">
@@ -94,7 +120,7 @@
         <div class="row">
           <div class="col-md-12">
             <h3 class="text-left text-uppercase text-secondary mb-0">Lucian</h3>
-            <table id="lucian"></table>
+            <table id="lucian" class="table table-dark"></table>
           </div>
         </div>
       </div>

@@ -72,4 +72,17 @@
     });
   });
 
+  /* Handle compare */
+  $(document).on('click', '#compareTAC', function() {
+    $('#tacDemo').addClass('d-none');
+    $('#compareTables').addClass('d-none');
+    $('#compareLoader').removeClass('d-none');
+    location.href = '#compareLoader';
+    setTimeout(function() {
+      $('#compareLoader').addClass('d-none');
+      $('#compareTables').removeClass('d-none');
+      location.href = '#compareTables';
+    }, 3000);
+  });
+
 })(jQuery); // End of use strict
