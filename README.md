@@ -1,1 +1,1 @@
-# [TAC Unit Compare](https://gozonjoedaimar.github.io/tac-stat-compare/)
+# [TAC Quick Stat View](https://gozonjoedaimar.github.io/tac-stat-compare/)
